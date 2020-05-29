@@ -55,6 +55,11 @@ app.put('/user/:id/password', checkSchema({
       // To negate a validator
       negated: true,
     },
+    // Characters are used in RegExp, some require double-escaping (like ] or \)
+    // this example blacklists: & " ' < > / \ ` $ | { } [ ] ^ ? * ( ) +
+    blacklist: {
+      options:'&"\'<>/\\\\`$|{}[\\]^?*()+'
+    },
     rtrim: {
       // Options as an array
       options: [[" ", "-"]],
